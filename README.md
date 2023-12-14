@@ -1,3 +1,6 @@
+This project makes use of the [mcl](https://github.com/herumi/mcl) library, 
+which is a portable and fast pairing-based cryptography library developed by MITSUNARI Shigeo.
+
 ## How to Build and Run Tests
 
 Before running the tests, you need to build and set up the necessary libraries. Follow these steps:
