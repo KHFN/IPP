@@ -23,7 +23,7 @@ void IPP_test(const string& file_name) {
     vector<G1> ww;
     ofstream fout(file_name, ios::app);
 
-    fout << "input size, Prove time (microseconds), Verification time (microseconds), naive pairing(microsecond), " << endl;
+    fout << "input size, Prove time (microseconds), Verification time (microseconds), naive pairing(microsecond), Proof Size(KB)" << endl;
 
     for(int size = 128; size <= 16384; size *= 2) {
         microseconds elapsed;
@@ -67,8 +67,12 @@ void IPP_test(const string& file_name) {
         }
         auto end_3 = steady_clock::now();
         elapsed = duration_cast<microseconds>(end_3 - start_3);
-        fout << elapsed.count() <<endl;
+        fout << elapsed.count() << ", ";
 
+        float N = ipp_proof.L.size()*sizeof(ipp_proof.L[0])+ipp_proof.R.size()*sizeof(ipp_proof.R[0])
+        +sizeof(ipp_proof.w);
+
+        fout << N/1024 << ", ";
 
         fout << endl;
     }
